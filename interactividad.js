@@ -516,160 +516,600 @@ function polarARect() {
 }
 
 
-// ============================================
-// 10. PLANO CARTESIANO INTERACTIVO
-// ============================================
 
-const canvas = document.querySelector("#planoCanvas");
+/* ==========================================
+   PLANO CARTESIANO INTERACTIVO
+========================================== */
 
+// Obtener elementos HTML
+
+const canvas = document.getElementById("planoCanvas");
 const ctx = canvas.getContext("2d");
 
-const puntoX = document.querySelector("#puntoX");
-const puntoY = document.querySelector("#puntoY");
+const plano = document.getElementById("planoInteractivo");
 
-const coordenadaMostrada = document.querySelector(
-    "#coordenadaMostrada"
-);
+const inputX = document.getElementById("coordenadaX");
+const inputY = document.getElementById("coordenadaY");
 
-const centro = canvas.width / 2;
-const escala = 25;
+const resultado = document.getElementById("resultadoCoordenadas");
+const nivelZoom = document.getElementById("nivelZoom");
+
+const btnGraficar = document.getElementById("btnGraficar");
+const btnAcercar = document.getElementById("btnAcercar");
+const btnAlejar = document.getElementById("btnAlejar");
+const btnRestablecer = document.getElementById("btnRestablecer");
+const btnPantallaCompleta =
+    document.getElementById("btnPantallaCompleta");
+
+
+// ==========================================
+// VARIABLES DEL PLANO
+// ==========================================
+
+let escala = 30;
+
+let desplazamientoX = 0;
+let desplazamientoY = 0;
+
+let puntoX = 2;
+let puntoY = 3;
+
+let arrastrando = false;
+
+let inicioX = 0;
+let inicioY = 0;
+
+let movimientoRealizado = false;
+
+
+// ==========================================
+// AJUSTAR TAMAÑO DEL CANVAS
+// ==========================================
+
+function ajustarCanvas() {
+
+    const rect = canvas.getBoundingClientRect();
+
+    if (!rect.width || !rect.height) return;
+
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    dibujarPlano();
+}
+
+
+// ==========================================
+// DIBUJAR PLANO CARTESIANO
+// ==========================================
 
 function dibujarPlano() {
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const ancho = canvas.clientWidth;
+    const alto = canvas.clientHeight;
 
-    // Fondo
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (!ancho || !alto) return;
 
-    // Cuadrícula
-    ctx.strokeStyle = "#e2e8f0";
+    ctx.clearRect(0, 0, ancho, alto);
+
+    // Posición del origen
+
+    const origenX = ancho / 2 + desplazamientoX;
+    const origenY = alto / 2 + desplazamientoY;
+
+    // Calcular límites visibles
+
+    const izquierda = Math.floor(
+        (0 - origenX) / escala
+    );
+
+    const derecha = Math.ceil(
+        (ancho - origenX) / escala
+    );
+
+    const arriba = Math.floor(
+        (origenY - alto) / escala
+    );
+
+    const abajo = Math.ceil(
+        origenY / escala
+    );
+
+
+    // ======================================
+    // CUADRÍCULA
+    // ======================================
+
     ctx.lineWidth = 1;
+    ctx.strokeStyle = "#e2e8f0";
 
-    for (let i = 0; i <= canvas.width; i += escala) {
+    ctx.beginPath();
 
-        ctx.beginPath();
-        ctx.moveTo(i, 0);
-        ctx.lineTo(i, canvas.height);
-        ctx.stroke();
+    for (let x = izquierda; x <= derecha; x++) {
 
-        ctx.beginPath();
-        ctx.moveTo(0, i);
-        ctx.lineTo(canvas.width, i);
-        ctx.stroke();
+        const posicion = origenX + x * escala;
+
+        ctx.moveTo(posicion, 0);
+        ctx.lineTo(posicion, alto);
 
     }
 
-    // Ejes X y Y
-    ctx.strokeStyle = "#1e293b";
+    for (let y = arriba; y <= abajo; y++) {
+
+        const posicion = origenY - y * escala;
+
+        ctx.moveTo(0, posicion);
+        ctx.lineTo(ancho, posicion);
+
+    }
+
+    ctx.stroke();
+
+
+    // ======================================
+    // EJES X E Y
+    // ======================================
+
+    ctx.strokeStyle = "#111827";
     ctx.lineWidth = 2;
 
     ctx.beginPath();
-    ctx.moveTo(0, centro);
-    ctx.lineTo(canvas.width, centro);
+
+    // Eje X
+
+    ctx.moveTo(0, origenY);
+    ctx.lineTo(ancho, origenY);
+
+    // Eje Y
+
+    ctx.moveTo(origenX, 0);
+    ctx.lineTo(origenX, alto);
+
     ctx.stroke();
 
+
+    // ======================================
+    // FLECHAS DE LOS EJES
+    // ======================================
+
+    ctx.fillStyle = "#111827";
+
+    // Flecha X positiva
+
     ctx.beginPath();
-    ctx.moveTo(centro, 0);
-    ctx.lineTo(centro, canvas.height);
-    ctx.stroke();
+    ctx.moveTo(ancho - 10, origenY - 5);
+    ctx.lineTo(ancho, origenY);
+    ctx.lineTo(ancho - 10, origenY + 5);
+    ctx.fill();
 
-    // Nombres de los ejes
-    ctx.fillStyle = "#1e293b";
-    ctx.font = "bold 16px Arial";
+    // Flecha Y positiva
 
-    ctx.fillText("X", canvas.width - 20, centro - 10);
-    ctx.fillText("Y", centro + 10, 20);
-
-    // Numeración
-    ctx.font = "11px Arial";
-    ctx.fillStyle = "#475569";
-
-    for (let i = -12; i <= 12; i++) {
-
-        if (i === 0) continue;
-
-        ctx.fillText(
-            i,
-            centro + i * escala - 4,
-            centro + 15
-        );
-
-        ctx.fillText(
-            i,
-            centro + 7,
-            centro - i * escala + 4
-        );
-
-    }
-
-    ctx.fillText("0", centro + 5, centro + 15);
-
-}
-
-function dibujarPunto() {
-
-    if (
-        puntoX.value.trim() === "" ||
-        puntoY.value.trim() === ""
-    ) {
-
-        coordenadaMostrada.textContent =
-            "Introduce los dos valores.";
-
-        dibujarPlano();
-
-        return;
-    }
-
-    const x = Number(puntoX.value);
-    const y = Number(puntoY.value);
-
-    if (
-        !Number.isFinite(x) ||
-        !Number.isFinite(y) ||
-        Math.abs(x) > 12 ||
-        Math.abs(y) > 12
-    ) {
-
-        coordenadaMostrada.textContent =
-            "Utiliza valores entre -12 y 12.";
-
-        dibujarPlano();
-
-        return;
-    }
-
-    dibujarPlano();
-
-    const px = centro + x * escala;
-    const py = centro - y * escala;
-
-    // Punto
     ctx.beginPath();
-    ctx.arc(px, py, 7, 0, Math.PI * 2);
+    ctx.moveTo(origenX - 5, 10);
+    ctx.lineTo(origenX, 0);
+    ctx.lineTo(origenX + 5, 10);
+    ctx.fill();
+
+
+    // ======================================
+    // NÚMEROS DE LOS EJES
+    // ======================================
+
+    ctx.fillStyle = "#334155";
+    ctx.font = "12px Arial";
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+
+    if (escala >= 15) {
+
+        for (let x = izquierda; x <= derecha; x++) {
+
+            if (x === 0) continue;
+
+            const posicion = origenX + x * escala;
+
+            if (posicion > 10 && posicion < ancho - 10) {
+
+                if (origenY > 15 && origenY < alto - 15) {
+
+                    ctx.fillText(
+                        x,
+                        posicion,
+                        origenY + 5
+                    );
+
+                }
+
+            }
+
+        }
+
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+
+        for (let y = arriba; y <= abajo; y++) {
+
+            if (y === 0) continue;
+
+            const posicion = origenY - y * escala;
+
+            if (posicion > 10 && posicion < alto - 10) {
+
+                if (origenX > 30 && origenX < ancho - 20) {
+
+                    ctx.fillText(
+                        y,
+                        origenX - 7,
+                        posicion
+                    );
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    // ======================================
+    // LETRAS X E Y
+    // ======================================
+
+    ctx.font = "bold 17px Arial";
+    ctx.fillStyle = "#111827";
+
+    ctx.textAlign = "right";
+    ctx.fillText("X", ancho - 12, origenY - 12);
+
+    ctx.textAlign = "left";
+    ctx.fillText("Y", origenX + 10, 20);
+
+
+    // ======================================
+    // ORIGEN
+    // ======================================
+
+    ctx.font = "12px Arial";
+    ctx.fillStyle = "#111827";
+    ctx.textAlign = "left";
+    ctx.fillText("(0,0)", origenX + 6, origenY + 5);
+
+
+    // ======================================
+    // DIBUJAR PUNTO SELECCIONADO
+    // ======================================
+
+    const px = origenX + puntoX * escala;
+    const py = origenY - puntoY * escala;
+
+    ctx.beginPath();
+
+    ctx.arc(px, py, 6, 0, Math.PI * 2);
 
     ctx.fillStyle = "#dc2626";
     ctx.fill();
 
-    // Etiqueta
+    ctx.strokeStyle = "#991b1b";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+
+    // Etiqueta del punto
+
     ctx.fillStyle = "#dc2626";
     ctx.font = "bold 14px Arial";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "bottom";
 
     ctx.fillText(
-        `(${x}, ${y})`,
-        px + 12,
-        py - 12
+        `(${puntoX}, ${puntoY})`,
+        px + 10,
+        py - 5
     );
 
-    coordenadaMostrada.textContent =
-        `Punto representado: (${x}, ${y})`;
+
+    // Mostrar zoom
+
+    nivelZoom.textContent =
+        "Zoom: " + Math.round((escala / 30) * 100) + "%";
 
 }
 
-dibujarPlano();
 
-dibujarPunto();
+// ==========================================
+// GRAFICAR PUNTO MANUALMENTE
+// ==========================================
+
+function graficarPunto() {
+
+    const x = Number(inputX.value);
+    const y = Number(inputY.value);
+
+    if (
+        inputX.value.trim() === "" ||
+        inputY.value.trim() === "" ||
+        !Number.isFinite(x) ||
+        !Number.isFinite(y)
+    ) {
+
+        alert("Introduce coordenadas válidas.");
+
+        return;
+
+    }
+
+    puntoX = x;
+    puntoY = y;
+
+    dibujarPlano();
+
+    resultado.textContent =
+        `Punto seleccionado: (${puntoX}, ${puntoY})`;
+
+}
+
+btnGraficar.addEventListener("click", graficarPunto);
+
+
+// ==========================================
+// CONVERTIR POSICIÓN DEL RATÓN A COORDENADAS
+// ==========================================
+
+function obtenerCoordenadas(evento) {
+
+    const rect = canvas.getBoundingClientRect();
+
+    const xPantalla = evento.clientX - rect.left;
+    const yPantalla = evento.clientY - rect.top;
+
+    const origenX = canvas.clientWidth / 2 + desplazamientoX;
+    const origenY = canvas.clientHeight / 2 + desplazamientoY;
+
+    const x = (xPantalla - origenX) / escala;
+    const y = (origenY - yPantalla) / escala;
+
+    return {
+        x: Math.round(x * 100) / 100,
+        y: Math.round(y * 100) / 100
+    };
+
+}
+
+
+// ==========================================
+// MOVER EL PLANO CON EL RATÓN O EL DEDO
+// ==========================================
+
+canvas.addEventListener("pointerdown", function(evento) {
+
+    arrastrando = true;
+    movimientoRealizado = false;
+
+    inicioX = evento.clientX - desplazamientoX;
+    inicioY = evento.clientY - desplazamientoY;
+
+    canvas.setPointerCapture(evento.pointerId);
+
+});
+
+
+canvas.addEventListener("pointermove", function(evento) {
+
+    if (!arrastrando) return;
+
+    const nuevaX = evento.clientX - inicioX;
+    const nuevaY = evento.clientY - inicioY;
+
+    if (
+        Math.abs(nuevaX - desplazamientoX) > 2 ||
+        Math.abs(nuevaY - desplazamientoY) > 2
+    ) {
+
+        movimientoRealizado = true;
+
+    }
+
+    desplazamientoX = nuevaX;
+    desplazamientoY = nuevaY;
+
+    dibujarPlano();
+
+});
+
+
+canvas.addEventListener("pointerup", function(evento) {
+
+    if (!arrastrando) return;
+
+    arrastrando = false;
+
+    if (movimientoRealizado) return;
+
+    // Si fue un clic y no un arrastre,
+    // seleccionar las coordenadas del plano.
+
+    const coordenadas = obtenerCoordenadas(evento);
+
+    puntoX = coordenadas.x;
+    puntoY = coordenadas.y;
+
+    inputX.value = puntoX;
+    inputY.value = puntoY;
+
+    resultado.textContent =
+        `Punto seleccionado: (${puntoX}, ${puntoY})`;
+
+    dibujarPlano();
+
+});
+
+
+canvas.addEventListener("pointercancel", function() {
+
+    arrastrando = false;
+
+});
+
+
+// ==========================================
+// ACERCAR Y ALEJAR EL PLANO
+// ==========================================
+
+function cambiarZoom(factor, centroX, centroY) {
+
+    const ancho = canvas.clientWidth;
+    const alto = canvas.clientHeight;
+
+    const origenX = ancho / 2 + desplazamientoX;
+    const origenY = alto / 2 + desplazamientoY;
+
+    const puntoAntesX = (centroX - origenX) / escala;
+    const puntoAntesY = (origenY - centroY) / escala;
+
+    const nuevaEscala = Math.max(
+        10,
+        Math.min(100, escala * factor)
+    );
+
+    escala = nuevaEscala;
+
+    desplazamientoX =
+        centroX - ancho / 2 - puntoAntesX * escala;
+
+    desplazamientoY =
+        centroY - alto / 2 + puntoAntesY * escala;
+
+    dibujarPlano();
+
+}
+
+
+// Botón acercar
+
+btnAcercar.addEventListener("click", function() {
+
+    cambiarZoom(
+        1.2,
+        canvas.clientWidth / 2,
+        canvas.clientHeight / 2
+    );
+
+});
+
+
+// Botón alejar
+
+btnAlejar.addEventListener("click", function() {
+
+    cambiarZoom(
+        0.8,
+        canvas.clientWidth / 2,
+        canvas.clientHeight / 2
+    );
+
+});
+
+
+// Zoom con la rueda del ratón
+
+canvas.addEventListener("wheel", function(evento) {
+
+    evento.preventDefault();
+
+    const rect = canvas.getBoundingClientRect();
+
+    const centroX = evento.clientX - rect.left;
+    const centroY = evento.clientY - rect.top;
+
+    const factor = evento.deltaY < 0 ? 1.1 : 0.9;
+
+    cambiarZoom(factor, centroX, centroY);
+
+}, { passive: false });
+
+
+// ==========================================
+// RESTABLECER VISTA
+// ==========================================
+
+btnRestablecer.addEventListener("click", function() {
+
+    escala = 30;
+
+    desplazamientoX = 0;
+    desplazamientoY = 0;
+
+    dibujarPlano();
+
+});
+
+
+// ==========================================
+// PANTALLA COMPLETA
+// ==========================================
+
+btnPantallaCompleta.addEventListener("click", async function() {
+
+    try {
+
+        if (!document.fullscreenElement) {
+
+            await plano.requestFullscreen();
+
+        } else {
+
+            await document.exitFullscreen();
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Error al cambiar la pantalla:",
+            error
+        );
+
+    }
+
+});
+
+
+// Redibujar al entrar o salir de pantalla completa
+
+document.addEventListener("fullscreenchange", function() {
+
+    setTimeout(ajustarCanvas, 100);
+
+});
+
+
+// ==========================================
+// ADAPTAR A CAMBIOS DE TAMAÑO
+// ==========================================
+
+const observadorPlano = new ResizeObserver(function() {
+
+    ajustarCanvas();
+
+});
+
+observadorPlano.observe(canvas);
+
+
+// ==========================================
+// INICIAR PLANO
+// ==========================================
+
+ajustarCanvas();
+
+graficarPunto();
+
 
 
 // ============================================
