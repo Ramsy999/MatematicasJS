@@ -1,19 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="theme-color" content="#253b80">
     <title>El mundo de las Matemáticas</title>
-
     <link rel="stylesheet" href="estilo.css">
 </head>
-
 <body>
 
-<header class="encabezado">
-    <h1>El mundo de las Matemáticas</h1>
-    <p>Explora, aprende y practica matemáticas.</p>
+<header class="encabezado" id="inicio">
+    <div class="cabecera-contenido">
+        <span class="etiqueta">APRENDE · EXPLORA · PRACTICA</span>
+        <h1>El mundo de las Matemáticas</h1>
+        <p>Descubre conceptos, experimenta y fortalece tus conocimientos.</p>
+    </div>
 
     <nav id="menu">
         <a href="#inicio">Inicio</a>
@@ -29,35 +31,38 @@
 
 <main>
 
-<!-- INICIO -->
-<section id="inicio" class="seccion">
+<section id="bienvenida" class="seccion bienvenida">
+    <span class="etiqueta">TU ESPACIO DE APRENDIZAJE</span>
     <h2>Bienvenido al mundo de las Matemáticas</h2>
-
     <p>
         En esta página encontrarás conceptos basados en los apuntes
-        de Aplicaciones del Pensamiento Matemático.
-        Es una página teórica e interactiva que permite aprender,
-        practicar y comprobar conocimientos.
+        de Aplicaciones del Pensamiento Matemático. Aprende teoría,
+        consulta imágenes, realiza conversiones y practica con
+        herramientas interactivas.
     </p>
 
     <div class="buscador">
         <h3>¿Qué concepto deseas buscar?</h3>
-
-        <input type="search" id="buscarConcepto"
-               placeholder="Ej. ángulo agudo, radianes...">
-
-        <button id="btnBuscar">Buscar</button>
-
+        <div class="buscador-fila">
+            <input type="search" id="buscarConcepto"
+                   placeholder="Ej. ángulo agudo, radianes...">
+            <button id="btnBuscar">Buscar</button>
+        </div>
         <p id="resultadoBusqueda" aria-live="polite"></p>
     </div>
 </section>
 
-<!-- ANGULOS -->
+<!-- 1. ÁNGULOS -->
 <section id="angulo" class="seccion">
-    <h2>1. Ángulos</h2>
+    <div class="titulo-seccion">
+        <span>01</span>
+        <div>
+            <h2>Ángulos</h2>
+            <p>Conceptos, clasificación y propiedades.</p>
+        </div>
+    </div>
 
     <h3>¿Qué es un ángulo?</h3>
-
     <p>
         Es la porción del plano comprendida entre dos semirrectas
         que tienen un origen común denominado vértice.
@@ -66,260 +71,131 @@
 
     <details open>
         <summary>Tipos de ángulos según su medida</summary>
-
         <div class="tabla-contenedor">
             <table>
-                <tr>
-                    <th>Ángulo</th>
-                    <th>Descripción</th>
-                    <th>Imagen</th>
-                </tr>
-
-                <tr>
-                    <td>Agudo</td>
-                    <td>Mide más de 0° y menos de 90°.</td>
-                    <td><img src="Agudo.png" alt="Ángulo agudo"></td>
-                </tr>
-
-                <tr>
-                    <td>Recto</td>
-                    <td>Mide exactamente 90°.</td>
-                    <td><img src="Recto.png" alt="Ángulo recto"></td>
-                </tr>
-
-                <tr>
-                    <td>Obtuso</td>
-                    <td>Mide más de 90° y menos de 180°.</td>
-                    <td><img src="Obtuso.png" alt="Ángulo obtuso"></td>
-                </tr>
-
-                <tr>
-                    <td>Llano</td>
-                    <td>Mide exactamente 180°.</td>
-                    <td><img src="Llano.png" alt="Ángulo llano"></td>
-                </tr>
-
-                <tr>
-                    <td>Completo</td>
-                    <td>Mide 360°.</td>
-                    <td><img src="Completo.png" alt="Ángulo completo"></td>
-                </tr>
-
-                <tr>
-                    <td>Nulo</td>
-                    <td>Mide 0°.</td>
-                    <td><img src="Nulo.png" alt="Ángulo nulo"></td>
-                </tr>
-
-                <tr>
-                    <td>Cóncavo</td>
-                    <td>Mide más de 180° y menos de 360°.</td>
-                    <td><img src="Concavo.png" alt="Ángulo cóncavo"></td>
-                </tr>
+                <thead>
+                    <tr><th>Ángulo</th><th>Descripción</th><th>Imagen</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Agudo</td><td>Mide más de 0° y menos de 90°.</td><td><img src="Agudo.png" alt="Ángulo agudo"></td></tr>
+                    <tr><td>Recto</td><td>Mide exactamente 90°.</td><td><img src="Recto.png" alt="Ángulo recto"></td></tr>
+                    <tr><td>Obtuso</td><td>Mide más de 90° y menos de 180°.</td><td><img src="Obtuso.png" alt="Ángulo obtuso"></td></tr>
+                    <tr><td>Llano</td><td>Mide exactamente 180°.</td><td><img src="Llano.png" alt="Ángulo llano"></td></tr>
+                    <tr><td>Completo</td><td>Mide 360°.</td><td><img src="Completo.png" alt="Ángulo completo"></td></tr>
+                    <tr><td>Nulo</td><td>Mide 0°.</td><td><img src="Nulo.png" alt="Ángulo nulo"></td></tr>
+                    <tr><td>Cóncavo</td><td>Mide más de 180° y menos de 360°.</td><td><img src="Concavo.png" alt="Ángulo cóncavo"></td></tr>
+                </tbody>
             </table>
         </div>
     </details>
 
     <details>
         <summary>Ángulos según su posición</summary>
-
         <div class="tabla-contenedor">
             <table>
-                <tr>
-                    <th>Ángulo</th>
-                    <th>Descripción</th>
-                    <th>Imagen</th>
-                </tr>
-
-                <tr>
-                    <td>Consecutivos</td>
-                    <td>Comparten vértice y un lado común.</td>
-                    <td><img src="Conjugados.png" alt="Ángulos consecutivos"></td>
-                </tr>
-
-                <tr>
-                    <td>Adyacentes</td>
-                    <td>Son consecutivos y sus lados no comunes forman 180°.</td>
-                    <td><img src="Adyacente.png" alt="Ángulos adyacentes"></td>
-                </tr>
-
-                <tr>
-                    <td>Opuestos por el vértice</td>
-                    <td>Se forman al cruzarse dos rectas y tienen la misma medida.</td>
-                    <td><img src="OpuestosVer.png" alt="Opuestos por el vértice"></td>
-                </tr>
+                <thead><tr><th>Ángulo</th><th>Descripción</th><th>Imagen</th></tr></thead>
+                <tbody>
+                    <tr><td>Consecutivos</td><td>Comparten vértice y un lado común.</td><td><img src="Conjugados.png" alt="Ángulos consecutivos"></td></tr>
+                    <tr><td>Adyacentes</td><td>Son consecutivos y sus lados no comunes forman 180°.</td><td><img src="Adyacente.png" alt="Ángulos adyacentes"></td></tr>
+                    <tr><td>Opuestos por el vértice</td><td>Se forman al cruzarse dos rectas y tienen la misma medida.</td><td><img src="OpuestosVer.png" alt="Opuestos por el vértice"></td></tr>
+                </tbody>
             </table>
         </div>
     </details>
 
     <details>
         <summary>Ángulos según su suma</summary>
-
         <div class="tabla-contenedor">
             <table>
-                <tr>
-                    <th>Ángulo</th>
-                    <th>Descripción</th>
-                    <th>Imagen</th>
-                </tr>
-
-                <tr>
-                    <td>Complementarios</td>
-                    <td>Dos ángulos que suman 90°.</td>
-                    <td><img src="Complementarios.png" alt="Complementarios"></td>
-                </tr>
-
-                <tr>
-                    <td>Suplementarios</td>
-                    <td>Dos ángulos que suman 180°.</td>
-                    <td><img src="Suplementarios.png" alt="Suplementarios"></td>
-                </tr>
+                <thead><tr><th>Ángulo</th><th>Descripción</th><th>Imagen</th></tr></thead>
+                <tbody>
+                    <tr><td>Complementarios</td><td>Dos ángulos que suman 90°.</td><td><img src="Complementarios.png" alt="Complementarios"></td></tr>
+                    <tr><td>Suplementarios</td><td>Dos ángulos que suman 180°.</td><td><img src="Suplementarios.png" alt="Suplementarios"></td></tr>
+                </tbody>
             </table>
         </div>
     </details>
 
     <details>
         <summary>Rectas paralelas cortadas por una transversal</summary>
-
-        <p>
-            Cuando dos rectas paralelas son cortadas por una
-            transversal se forman ocho ángulos.
-        </p>
-
-        <img class="imagen-teoria" src="2Rectas.png"
-             alt="Dos rectas paralelas y una transversal">
-
-        <ul>
-            <li>
-                <strong>Correspondientes:</strong>
-                ocupan la misma posición y son iguales.
-                <img class="imagen-teoria" src="Correspondientes.png" alt="Correspondientes">
-            </li>
-
-            <li>
-                <strong>Alternos internos:</strong>
-                están dentro de las paralelas y en lados opuestos.
-                <img class="imagen-teoria" src="AltInternos.png" alt="Alternos internos">
-            </li>
-
-            <li>
-                <strong>Alternos externos:</strong>
-                están fuera de las paralelas y en lados opuestos.
-                <img class="imagen-teoria" src="AltExternos.png" alt="Alternos externos">
-            </li>
-
-            <li>
-                <strong>Colaterales:</strong>
-                están del mismo lado de la transversal y suman 180°.
-                <img class="imagen-teoria" src="Conjugados.png" alt="Colaterales">
-            </li>
+        <p>Cuando dos rectas paralelas son cortadas por una transversal se forman ocho ángulos.</p>
+        <img class="imagen-teoria" src="2Rectas.png" alt="Dos rectas paralelas y una transversal">
+        <ul class="lista-imagenes">
+            <li><strong>Correspondientes:</strong> ocupan la misma posición y son iguales.
+                <img class="imagen-teoria" src="Correspondientes.png" alt="Correspondientes"></li>
+            <li><strong>Alternos internos:</strong> están dentro de las paralelas y en lados opuestos.
+                <img class="imagen-teoria" src="AltInternos.png" alt="Alternos internos"></li>
+            <li><strong>Alternos externos:</strong> están fuera de las paralelas y en lados opuestos.
+                <img class="imagen-teoria" src="AltExternos.png" alt="Alternos externos"></li>
+            <li><strong>Colaterales:</strong> están del mismo lado de la transversal y suman 180°.
+                <img class="imagen-teoria" src="Conjugados.png" alt="Colaterales"></li>
         </ul>
     </details>
 
     <details>
         <summary>Formas de medir los ángulos</summary>
-
         <h3>Grados sexagesimales (°)</h3>
-
-        <p>
-            Una circunferencia completa equivale a 360 grados.
-            Cada grado se divide en 60 minutos y cada minuto
-            en 60 segundos.
-        </p>
-
+        <p>Una circunferencia completa equivale a 360 grados. Cada grado se divide en 60 minutos y cada minuto en 60 segundos.</p>
         <img class="imagen-teoria" src="GradosSex.png" alt="Grados sexagesimales">
-
         <h3>Radianes (rad)</h3>
-
-        <p>
-            Un radián es el ángulo central cuyo arco tiene
-            la misma longitud que el radio.
-            Una vuelta completa equivale a 2π radianes.
-        </p>
-
+        <p>Un radián es el ángulo central cuyo arco tiene la misma longitud que el radio. Una vuelta completa equivale a 2π radianes.</p>
         <img class="imagen-teoria" src="Radianes.png" alt="Radianes">
     </details>
 </section>
 
-
-
-<!-- CONVERSIONES GMS -->
+<!-- 2. CONVERSIONES -->
 <section id="conversiones" class="seccion">
-    <h2>2. Conversiones de grados y radianes</h2>
+    <div class="titulo-seccion">
+        <span>02</span>
+        <div><h2>Conversiones de grados y radianes</h2><p>Calcula y comprueba tus resultados.</p></div>
+    </div>
 
     <details open>
         <summary>Grados, minutos y segundos a grados decimales</summary>
-
-        <p>Fórmula:</p>
-        <p class="formula">
-            GD = G + (M / 60) + (S / 3600)
-        </p>
-
+        <p class="formula">GD = G + (M / 60) + (S / 3600)</p>
         <div class="calculadora">
-            <label>Grados:</label>
-            <input type="number" id="g" placeholder="Ej. 45">
-
-            <label>Minutos:</label>
-            <input type="number" id="m" placeholder="Ej. 30">
-
-            <label>Segundos:</label>
-            <input type="number" id="s" placeholder="Ej. 20">
-
+            <label for="g">Grados:</label><input type="number" id="g" placeholder="Ej. 45">
+            <label for="m">Minutos:</label><input type="number" id="m" placeholder="Ej. 30">
+            <label for="s">Segundos:</label><input type="number" id="s" placeholder="Ej. 20">
             <button onclick="dmsADec()">Convertir</button>
-
-            <div class="resultado" id="resDMS"></div>
+            <div class="resultado" id="resDMS" aria-live="polite"></div>
         </div>
     </details>
 
     <details>
         <summary>Grados decimales a radianes</summary>
-
-        <p class="formula">
-            rad = grados × π / 180
-        </p>
-
+        <p class="formula">rad = grados × π / 180</p>
         <div class="calculadora">
-            <label>Grados decimales:</label>
-            <input type="number" id="des2" step="any">
-
+            <label for="des2">Grados decimales:</label>
+            <input type="number" id="des2" step="any" placeholder="Ej. 180">
             <button onclick="decARad()">Convertir</button>
-
-            <div class="resultado" id="resRad"></div>
+            <div class="resultado" id="resRad" aria-live="polite"></div>
         </div>
     </details>
 
     <details>
         <summary>Radianes a grados decimales y GMS</summary>
-
-        <p class="formula">
-            Grados = radianes × 180 / π
-        </p>
-
+        <p class="formula">Grados = radianes × 180 / π</p>
         <div class="calculadora">
-            <label>Radianes:</label>
-            <input type="number" id="rad2" step="any">
-
+            <label for="rad2">Radianes:</label>
+            <input type="number" id="rad2" step="any" placeholder="Ej. 3.1416">
             <button onclick="radAGrados()">Convertir</button>
-
-            <div class="resultado" id="resGrados"></div>
+            <div class="resultado" id="resGrados" aria-live="polite"></div>
         </div>
     </details>
 </section>
 
-<!-- TRIANGULOS -->
+<!-- 3. TRIÁNGULOS -->
 <section id="triangulos" class="seccion">
-    <h2>3. Triángulos semejantes y congruentes</h2>
+    <div class="titulo-seccion">
+        <span>03</span>
+        <div><h2>Triángulos semejantes y congruentes</h2><p>Compara sus lados y ángulos.</p></div>
+    </div>
 
     <details open>
         <summary>Triángulos semejantes</summary>
-
-        <p>
-            Dos triángulos son semejantes cuando tienen la misma
-            forma, aunque sus tamaños sean diferentes.
-        </p>
-
+        <p>Dos triángulos son semejantes cuando tienen la misma forma, aunque sus tamaños sean diferentes.</p>
         <img class="imagen-teoria" src="Semejantes.png" alt="Triángulos semejantes">
-
         <ul>
             <li><strong>Ángulo-Ángulo (AA):</strong> tienen dos ángulos correspondientes iguales.</li>
             <li><strong>Lado-Lado-Lado (LLL):</strong> sus tres pares de lados son proporcionales.</li>
@@ -329,14 +205,8 @@
 
     <details>
         <summary>Triángulos congruentes</summary>
-
-        <p>
-            Dos triángulos son congruentes cuando tienen
-            exactamente la misma forma y tamaño.
-        </p>
-
+        <p>Dos triángulos son congruentes cuando tienen exactamente la misma forma y tamaño.</p>
         <img class="imagen-teoria" src="Congruentes.png" alt="Triángulos congruentes">
-
         <ul>
             <li><strong>LLL:</strong> sus tres lados correspondientes son iguales.</li>
             <li><strong>LAL:</strong> dos lados y el ángulo comprendido son iguales.</li>
@@ -345,19 +215,20 @@
     </details>
 </section>
 
-<!-- COORDENADAS -->
+<!-- 4. COORDENADAS -->
 <section id="coordenadas" class="seccion">
-    <h2>4. Coordenadas rectangulares y polares</h2>
+    <div class="titulo-seccion">
+        <span>04</span>
+        <div><h2>Coordenadas rectangulares y polares</h2><p>Ubica puntos en diferentes sistemas.</p></div>
+    </div>
 
     <details open>
         <summary>Conceptos principales</summary>
-
         <ul>
             <li><strong>Coordenada:</strong> número que indica la posición de un punto.</li>
             <li><strong>Par ordenado:</strong> conjunto de dos coordenadas (x,y).</li>
             <li><strong>Abscisa:</strong> coordenada horizontal X.</li>
             <li><strong>Ordenada:</strong> coordenada vertical Y.</li>
-            <li><strong>Punto:</strong> posición en el plano.</li>
             <li><strong>Polo:</strong> origen del plano polar.</li>
             <li><strong>Argumento:</strong> ángulo θ medido desde el eje polar.</li>
             <li><strong>Coordenada rectangular:</strong> (x,y).</li>
@@ -367,174 +238,101 @@
 
     <details>
         <summary>Plano cartesiano</summary>
-
-        <p>
-            Está formado por dos ejes perpendiculares,
-            X y Y, que se cortan en el origen (0,0).
-        </p>
-
+        <p>Está formado por dos ejes perpendiculares, X y Y, que se cortan en el origen (0,0).</p>
         <img class="imagen-teoria" src="Cartesiano.png" alt="Plano cartesiano">
     </details>
 
     <details>
         <summary>Plano polar</summary>
-
-        <p>
-            Está formado por un polo y un eje polar.
-            Los puntos se localizan mediante una distancia r
-            y un ángulo θ.
-        </p>
-
+        <p>Está formado por un polo y un eje polar. Los puntos se localizan mediante una distancia r y un ángulo θ.</p>
         <img class="imagen-teoria" src="Polar.png" alt="Plano polar">
     </details>
 </section>
 
-<!-- CONVERSION POLAR RECTANGULAR -->
+<!-- 5. CONVERSIONES DE COORDENADAS -->
 <section id="convRectPol" class="seccion">
-    <h2>5. Conversiones de coordenadas</h2>
+    <div class="titulo-seccion">
+        <span>05</span>
+        <div><h2>Conversiones de coordenadas</h2><p>Transforma coordenadas rectangulares y polares.</p></div>
+    </div>
 
     <details open>
         <summary>Rectangulares a polares</summary>
-
-        <p class="formula">
-            r = √(x² + y²)
-        </p>
-
-        <p class="formula">
-            θ = atan2(y,x)
-        </p>
-
+        <p class="formula">r = √(x² + y²)</p>
+        <p class="formula">θ = atan2(y,x)</p>
         <div class="calculadora">
-            <label>Coordenada X:</label>
-            <input type="number" id="x" step="any">
-
-            <label>Coordenada Y:</label>
-            <input type="number" id="y" step="any">
-
+            <label for="x">Coordenada X:</label><input type="number" id="x" step="any">
+            <label for="y">Coordenada Y:</label><input type="number" id="y" step="any">
             <button onclick="rectAPolar()">Convertir</button>
-
-            <div class="resultado" id="resPolar"></div>
+            <div class="resultado" id="resPolar" aria-live="polite"></div>
         </div>
     </details>
 
     <details>
         <summary>Polares a rectangulares</summary>
-
         <p class="formula">x = r cos(θ)</p>
         <p class="formula">y = r sen(θ)</p>
-
         <div class="calculadora">
-            <label>Radio r:</label>
-            <input type="number" id="r2" step="any">
-
-            <label>Ángulo θ (grados):</label>
-            <input type="number" id="theta2" step="any">
-
+            <label for="r2">Radio r:</label><input type="number" id="r2" step="any">
+            <label for="theta2">Ángulo θ (grados):</label><input type="number" id="theta2" step="any">
             <button onclick="polarARect()">Convertir</button>
-
-            <div class="resultado" id="resRect"></div>
+            <div class="resultado" id="resRect" aria-live="polite"></div>
         </div>
     </details>
 </section>
 
-
+<!-- 6. PLANO INTERACTIVO -->
 <section id="plano" class="seccion">
-    <h2>Plano cartesiano interactivo</h2>
-
-    <p>
-        Explora el plano cartesiano. Puedes moverlo,
-        acercarlo, alejarlo y seleccionar puntos.
-    </p>
-
-    <div class="plano-contenedor" id="planoInteractivo">
-
-        <div class="plano-encabezado">
-            <h3>Explorador de coordenadas</h3>
-
-            <button
-                id="btnPantallaCompleta"
-                class="btn-expandir"
-                title="Ampliar pantalla">
-                ⛶
-            </button>
-        </div>
-
-        <div class="plano-controles">
-
-            <div class="grupo-control">
-                <label for="coordenadaX">Coordenada X:</label>
-                <input
-                    type="number"
-                    id="coordenadaX"
-                    value="2"
-                    step="any">
-            </div>
-
-            <div class="grupo-control">
-                <label for="coordenadaY">Coordenada Y:</label>
-                <input
-                    type="number"
-                    id="coordenadaY"
-                    value="3"
-                    step="any">
-            </div>
-
-            <button id="btnGraficar">Graficar punto</button>
-        </div>
-
-        <div class="herramientas-plano">
-
-            <button id="btnAcercar" title="Acercar">+</button>
-
-            <button id="btnAlejar" title="Alejar">−</button>
-
-            <button id="btnRestablecer" title="Restablecer vista">
-                Restablecer
-            </button>
-
-            <span id="nivelZoom">Zoom: 100%</span>
-
-        </div>
-
-        <div class="canvas-contenedor">
-            <canvas
-                id="planoCanvas"
-                aria-label="Plano cartesiano interactivo">
-            </canvas>
-        </div>
-
-        <div class="informacion-plano">
-
-            <p id="resultadoCoordenadas">
-                Punto seleccionado: (2, 3)
-            </p>
-
-            <p id="instruccionesPlano">
-                Arrastra para mover el plano.
-                Utiliza la rueda del ratón para acercar o alejar.
-                Haz clic para seleccionar un punto.
-            </p>
-
-        </div>
-
+    <div class="titulo-seccion">
+        <span>06</span>
+        <div><h2>Plano cartesiano interactivo</h2><p>Explora, mueve y amplía el plano.</p></div>
     </div>
+
+    <p>Introduce las coordenadas para representar un punto. También puedes arrastrar el plano y utilizar el zoom.</p>
+
+    <div class="controles-plano">
+        <div class="entrada-punto">
+            <label for="puntoX">X</label>
+            <input type="number" id="puntoX" value="2" step="any">
+            <label for="puntoY">Y</label>
+            <input type="number" id="puntoY" value="3" step="any">
+            <button id="btnGraficar" onclick="dibujarPunto()">Graficar punto</button>
+        </div>
+        <div class="herramientas-plano">
+            <button id="btnAcercar" aria-label="Acercar">＋</button>
+            <button id="btnAlejar" aria-label="Alejar">－</button>
+            <button id="btnRestablecer">Restablecer</button>
+            <button id="btnPantallaCompleta" aria-label="Pantalla completa">⛶ Ampliar</button>
+            <span id="nivelZoom">Zoom: 100%</span>
+        </div>
+    </div>
+
+    <div class="marco-plano" id="planoInteractivo">
+        <canvas id="planoCanvas" width="900" height="600">
+            Tu navegador no soporta Canvas.
+        </canvas>
+    </div>
+    <p id="coordenadaMostrada" class="resultado" aria-live="polite">Punto actual: (2, 3)</p>
+    <p class="ayuda-plano">Arrastra para mover el plano · Usa la rueda del ratón para acercar o alejar · Pulsa el plano para seleccionar un punto.</p>
 </section>
 
-
-<!-- TARJETAS -->
+<!-- 7. TARJETAS -->
 <section id="estudio" class="seccion">
-    <h2>Tarjetas de estudio</h2>
+    <div class="titulo-seccion">
+        <span>07</span>
+        <div><h2>Tarjetas de estudio</h2><p>Repasa los conceptos aprendidos.</p></div>
+    </div>
 
     <p>Presiona la tarjeta para descubrir la respuesta.</p>
-
-    <div class="tarjeta" id="tarjeta">
+    <div class="tarjeta" id="tarjeta" tabindex="0" role="button" aria-label="Voltear tarjeta">
         <div class="tarjeta-interior" id="tarjetaInterior">
             <div class="cara frente">
+                <span class="etiqueta">PREGUNTA</span>
                 <h3 id="preguntaTarjeta"></h3>
                 <p>Presiona para revelar</p>
             </div>
-
             <div class="cara reverso">
+                <span class="etiqueta">RESPUESTA</span>
                 <h3>Respuesta</h3>
                 <p id="respuestaTarjeta"></p>
             </div>
@@ -542,28 +340,26 @@
     </div>
 
     <div class="controles">
-        <button onclick="anteriorTarjeta()">Anterior</button>
-        <button onclick="siguienteTarjeta()">Siguiente</button>
+        <button onclick="anteriorTarjeta()">← Anterior</button>
+        <button onclick="siguienteTarjeta()">Siguiente →</button>
     </div>
-
-    <p id="contadorTarjetas"></p>
+    <p id="contadorTarjetas" class="contador"></p>
 </section>
 
-<!-- CUESTIONARIO -->
+<!-- 8. CUESTIONARIO -->
 <section id="cuestionario" class="seccion">
-    <h2>Mini cuestionario matemático</h2>
-
-    <p>Comprueba cuánto has aprendido.</p>
+    <div class="titulo-seccion">
+        <span>08</span>
+        <div><h2>Mini cuestionario matemático</h2><p>Comprueba cuánto has aprendido.</p></div>
+    </div>
 
     <div id="preguntaQuiz" class="quiz">
+        <div class="progreso-contenedor"><div id="barraProgreso"></div></div>
+        <p id="progresoTexto" class="contador"></p>
         <h3 id="textoPregunta"></h3>
-
         <div id="opcionesQuiz"></div>
-
         <p id="resultadoQuiz" aria-live="polite"></p>
-
         <button id="siguientePregunta">Siguiente pregunta</button>
-
         <h3 id="puntuacion"></h3>
     </div>
 </section>
@@ -571,11 +367,11 @@
 </main>
 
 <footer>
-    <p>El mundo de las Matemáticas</p>
+    <h2>El mundo de las Matemáticas</h2>
     <p>Aprender, practicar y descubrir.</p>
+    <a href="#inicio">Volver al inicio ↑</a>
 </footer>
 
-<script src="interactividad.js"></script>
-
+<script src="js/interactividad.js"></script>
 </body>
 </html>
