@@ -472,31 +472,89 @@
     </details>
 </section>
 
-<!-- PLANO CARTESIANO -->
+
 <section id="plano" class="seccion">
     <h2>Plano cartesiano interactivo</h2>
 
     <p>
-        Introduce las coordenadas X y Y para representar
-        un punto en el plano cartesiano.
+        Explora el plano cartesiano. Puedes moverlo,
+        acercarlo, alejarlo y seleccionar puntos.
     </p>
 
-    <div class="calculadora">
-        <label>Valor de X:</label>
-        <input type="number" id="puntoX" value="2">
+    <div class="plano-contenedor" id="planoInteractivo">
 
-        <label>Valor de Y:</label>
-        <input type="number" id="puntoY" value="3">
+        <div class="plano-encabezado">
+            <h3>Explorador de coordenadas</h3>
 
-        <button onclick="dibujarPunto()">Representar punto</button>
+            <button
+                id="btnPantallaCompleta"
+                class="btn-expandir"
+                title="Ampliar pantalla">
+                ⛶
+            </button>
+        </div>
 
-        <p id="coordenadaMostrada"></p>
+        <div class="plano-controles">
+
+            <div class="grupo-control">
+                <label for="coordenadaX">Coordenada X:</label>
+                <input
+                    type="number"
+                    id="coordenadaX"
+                    value="2"
+                    step="any">
+            </div>
+
+            <div class="grupo-control">
+                <label for="coordenadaY">Coordenada Y:</label>
+                <input
+                    type="number"
+                    id="coordenadaY"
+                    value="3"
+                    step="any">
+            </div>
+
+            <button id="btnGraficar">Graficar punto</button>
+        </div>
+
+        <div class="herramientas-plano">
+
+            <button id="btnAcercar" title="Acercar">+</button>
+
+            <button id="btnAlejar" title="Alejar">−</button>
+
+            <button id="btnRestablecer" title="Restablecer vista">
+                Restablecer
+            </button>
+
+            <span id="nivelZoom">Zoom: 100%</span>
+
+        </div>
+
+        <div class="canvas-contenedor">
+            <canvas
+                id="planoCanvas"
+                aria-label="Plano cartesiano interactivo">
+            </canvas>
+        </div>
+
+        <div class="informacion-plano">
+
+            <p id="resultadoCoordenadas">
+                Punto seleccionado: (2, 3)
+            </p>
+
+            <p id="instruccionesPlano">
+                Arrastra para mover el plano.
+                Utiliza la rueda del ratón para acercar o alejar.
+                Haz clic para seleccionar un punto.
+            </p>
+
+        </div>
+
     </div>
-
-    <canvas id="planoCanvas" width="600" height="600">
-        Tu navegador no soporta Canvas.
-    </canvas>
 </section>
+
 
 <!-- TARJETAS -->
 <section id="estudio" class="seccion">
