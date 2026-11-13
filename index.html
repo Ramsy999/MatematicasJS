@@ -241,42 +241,96 @@
     </details>
 </section>
 
-<!-- SIMULADOR ANGULOS -->
-<section class="seccion">
-    <h2>Simulador interactivo de ángulos</h2>
+
+<div class="simulador-ampliable" id="simuladorAngulos">
+
+    <div class="simulador-encabezado">
+
+        <h3>Simulador interactivo de ángulos</h3>
+
+        <button
+            id="btnAmpliarAngulo"
+            class="btn-expandir-angulo"
+            title="Ampliar simulador">
+            ⛶
+        </button>
+
+    </div>
 
     <p>
-        Mueve el control para modificar la abertura del ángulo.
+        Desliza el control para modificar la apertura
+        del ángulo y observar cómo cambia.
     </p>
 
-    <div class="simulador">
-        <svg viewBox="0 0 320 260" id="graficaAngulo">
-            <line x1="40" y1="210" x2="290" y2="210"
-                  stroke="#94a3b8" stroke-width="2"/>
+    <div class="grafica-angulo">
 
-            <line x1="40" y1="210" x2="40" y2="20"
-                  stroke="#94a3b8" stroke-width="2"/>
+        <svg
+            id="graficaAngulo"
+            viewBox="0 0 500 400"
+            role="img"
+            aria-label="Representación gráfica de un ángulo">
 
-            <line id="ladoAngulo"
-                  x1="40" y1="210" x2="220" y2="210"
-                  stroke="#2563eb" stroke-width="5"
-                  stroke-linecap="round"/>
+            <line
+                x1="100" y1="300"
+                x2="420" y2="300"
+                stroke="#64748b"
+                stroke-width="3"/>
 
-            <path id="arcoAngulo"
-                  fill="none" stroke="#f59e0b"
-                  stroke-width="3"/>
+            <line
+                x1="100" y1="300"
+                x2="100" y2="40"
+                stroke="#64748b"
+                stroke-width="3"/>
 
-            <circle cx="40" cy="210" r="5" fill="red"/>
+            <path
+                id="ladoAngulo"
+                d="M 100 300 L 420 300"
+                stroke="#2563eb"
+                stroke-width="5"
+                stroke-linecap="round"/>
+
+            <path
+                id="arcoAngulo"
+                d=""
+                fill="none"
+                stroke="#d97706"
+                stroke-width="4"/>
+
+            <circle
+                cx="100"
+                cy="300"
+                r="7"
+                fill="#dc2626"/>
+
         </svg>
 
-        <h3 id="valorAngulo">45°</h3>
-
-        <input type="range" id="controlAngulo"
-               min="0" max="360" value="45">
-
-        <p id="tipoAngulo">Ángulo agudo</p>
     </div>
-</section>
+
+    <div class="datos-angulo">
+
+        <h2 id="valorAngulo">90°</h2>
+
+        <p id="tipoAngulo">Ángulo recto</p>
+
+    </div>
+
+    <div class="control-angulo">
+
+        <label for="controlAngulo">
+            Modificar apertura del ángulo:
+        </label>
+
+        <input
+            type="range"
+            id="controlAngulo"
+            min="0"
+            max="360"
+            value="90"
+            step="1">
+
+    </div>
+
+</div>
 
 <!-- CONVERSIONES GMS -->
 <section id="conversiones" class="seccion">
