@@ -1,0 +1,450 @@
+/* =================================
+   CONFIGURACION GENERAL
+================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 150px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.7;
+}
+
+/* =================================
+   ENCABEZADO
+================================= */
+
+.encabezado {
+    background: linear-gradient(135deg, #172554, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.encabezado h1 {
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.encabezado p {
+    color: #dbeafe;
+}
+
+/* =================================
+   MENU
+================================= */
+
+#menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+#menu a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #1e40af;
+    transition: 0.3s;
+}
+
+#menu a:hover,
+#menu a.activo {
+    background: #f59e0b;
+    color: #172554;
+}
+
+/* =================================
+   SECCIONES
+================================= */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.seccion {
+    background: white;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    scroll-margin-top: 150px;
+}
+
+.seccion h2 {
+    color: #1d4ed8;
+    border-bottom: 2px solid #bfdbfe;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.seccion h3 {
+    margin: 15px 0 8px;
+}
+
+.seccion p {
+    margin: 12px 0;
+}
+
+/* =================================
+   BUSCADOR
+================================= */
+
+.buscador {
+    background: #eff6ff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+input {
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 15px;
+    width: 100%;
+    margin: 5px 0 12px;
+}
+
+input:focus {
+    outline: 2px solid #60a5fa;
+    border-color: #2563eb;
+}
+
+/* =================================
+   BOTONES
+================================= */
+
+button {
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =================================
+   CONTENIDO DESPLEGABLE
+================================= */
+
+details {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+summary {
+    padding: 15px;
+    cursor: pointer;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+summary:hover {
+    background: #bfdbfe;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #cbd5e1;
+}
+
+details > p,
+details > ul,
+details > h3,
+details > img {
+    margin: 15px;
+}
+
+/* =================================
+   TABLAS
+================================= */
+
+.tabla-contenedor {
+    overflow-x: auto;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 450px;
+}
+
+th {
+    background: #1d4ed8;
+    color: white;
+}
+
+td, th {
+    border: 1px solid #cbd5e1;
+    padding: 12px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background: #eff6ff;
+}
+
+table img {
+    max-width: 130px;
+    width: 100%;
+    height: auto;
+}
+
+/* =================================
+   IMAGENES
+================================= */
+
+.imagen-teoria {
+    display: block;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+/* =================================
+   CALCULADORAS
+================================= */
+
+.calculadora {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+}
+
+.calculadora label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.formula {
+    background: #dbeafe;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.resultado {
+    background: #dcfce7;
+    color: #166534;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/* =================================
+   SIMULADOR DE ANGULOS
+================================= */
+
+.simulador {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background: #eff6ff;
+    border-radius: 15px;
+}
+
+#controlAngulo {
+    accent-color: #2563eb;
+}
+
+#graficaAngulo {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: auto;
+}
+
+/* =================================
+   PLANO CARTESIANO
+================================= */
+
+#planoCanvas {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px auto;
+    background: white;
+    border: 2px solid #94a3b8;
+    border-radius: 10px;
+}
+
+/* =================================
+   TARJETAS DE ESTUDIO
+================================= */
+
+.tarjeta {
+    width: 100%;
+    max-width: 400px;
+    height: 230px;
+    margin: 25px auto;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.tarjeta-interior {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+}
+
+.tarjeta.volteada .tarjeta-interior {
+    transform: rotateY(180deg);
+}
+
+.cara {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.frente {
+    background: #1d4ed8;
+    color: white;
+}
+
+.reverso {
+    background: #059669;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.controles {
+    text-align: center;
+}
+
+/* =================================
+   CUESTIONARIO
+================================= */
+
+.quiz {
+    background: #eff6ff;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.opcion {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    text-align: left;
+    background: white;
+    color: #1e293b;
+    border: 1px solid #93c5fd;
+}
+
+.opcion:hover {
+    background: #dbeafe;
+}
+
+.opcion.correcta {
+    background: #bbf7d0;
+    border-color: #16a34a;
+}
+
+.opcion.incorrecta {
+    background: #fecaca;
+    border-color: #dc2626;
+}
+
+#resultadoQuiz {
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* =================================
+   PIE DE PAGINA
+================================= */
+
+footer {
+    background: #172554;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 650px) {
+
+    .encabezado h1 {
+        font-size: 26px;
+    }
+
+    #menu {
+        flex-direction: column;
+    }
+
+    #menu a {
+        width: 100%;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .seccion {
+        padding: 15px;
+    }
+
+    .calculadora {
+        padding: 12px;
+    }
+}
