@@ -1482,6 +1482,43 @@ siguientePregunta.addEventListener("click", () => {
 mostrarPregunta();
 
 
+// ===================================
+// AMPLIAR SIMULADOR DE ÁNGULOS
+// ===================================
+
+const btnAmpliarAngulo =
+    document.getElementById("btnAmpliarAngulo");
+
+const simuladorAngulos =
+    document.getElementById("simuladorAngulos");
+
+btnAmpliarAngulo.addEventListener("click", async function() {
+
+    try {
+
+        if (!document.fullscreenElement) {
+
+            await simuladorAngulos.requestFullscreen();
+
+        } else {
+
+            await document.exitFullscreen();
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "No se pudo ampliar el simulador:",
+            error
+        );
+
+    }
+
+});
+
+
+
 // ============================================
 // FIN DEL PROGRAMA
 // ============================================
