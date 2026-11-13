@@ -655,3 +655,155 @@ footer {
     }
 }
 
+/* ===================================
+   SIMULADOR DE ÁNGULOS AMPLIABLE
+=================================== */
+
+.simulador-ampliable {
+    position: relative;
+    width: 95%;
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #e0f2fe;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.simulador-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.simulador-encabezado h3 {
+    color: #1e3a8a;
+    margin: 0;
+}
+
+.btn-expandir-angulo {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 9px;
+    background: #2563eb;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.btn-expandir-angulo:hover {
+    background: #1d4ed8;
+}
+
+/* GRÁFICA */
+
+.grafica-angulo {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+#graficaAngulo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* VALOR Y CLASIFICACIÓN */
+
+.datos-angulo {
+    text-align: center;
+}
+
+#valorAngulo {
+    color: #1e3a8a;
+    font-size: 30px;
+}
+
+#tipoAngulo {
+    color: #475569;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* CONTROL */
+
+.control-angulo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#controlAngulo {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #2563eb;
+}
+
+/* ===================================
+   PANTALLA COMPLETA
+=================================== */
+
+.simulador-ampliable:fullscreen {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 35px;
+    border-radius: 0;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #e0f2fe;
+    overflow-y: auto;
+}
+
+.simulador-ampliable:fullscreen .grafica-angulo {
+    width: min(85vw, 85vh);
+    max-width: 900px;
+}
+
+.simulador-ampliable:fullscreen #graficaAngulo {
+    width: 100%;
+    max-height: 65vh;
+}
+
+.simulador-ampliable:fullscreen .control-angulo {
+    width: 75%;
+    max-width: 700px;
+}
+
+.simulador-ampliable:fullscreen .btn-expandir-angulo {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+}
+
+@media (max-width: 600px) {
+
+    .simulador-ampliable {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .simulador-ampliable:fullscreen {
+        padding: 15px;
+    }
+
+    .simulador-ampliable:fullscreen .grafica-angulo {
+        width: 95%;
+    }
+
+    .simulador-ampliable:fullscreen .control-angulo {
+        width: 95%;
+    }
+
+}
+
